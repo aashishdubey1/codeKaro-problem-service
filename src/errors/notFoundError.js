@@ -7,4 +7,4 @@ class NotFound extends BaseError {
     }
 }
 
-module.exports = BadRequest
+module.exports = NotFound
