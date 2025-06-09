@@ -57,28 +57,14 @@ const getProblems = async (req,res,next)=>{
 
 const deleteProblem = async (req,res,next)=>{
     try {
-        console.log("Inside Controller")
         const problemId  = req.params.id
-        console.log(problemId)
         const deletedProblem = await problemService.deleteProblem(problemId)
-        if(deletedProblem){
-            res.status(StatusCodes.OK).json({
+        res.status(StatusCodes.OK).json({
             success:true,
             message:"Problem deleted Successfully",
-            errro:{},
+            error:{},
             data:deletedProblem
         })
-    }else{
-        res.status(StatusCodes.NOT_FOUND).json({
-            success:false,  
-            message:"Data Not found",
-            errro:{
-                 code: 'PROBLEM_NOT_FOUND',
-                details: `No problem found with ID: ${problemId}`
-            },
-            data:{}
-        })
-    }
     } catch (error) {
         next(error)
     }
