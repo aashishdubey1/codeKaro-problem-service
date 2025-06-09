@@ -25,6 +25,9 @@ class ProblemRepository{
 
     async getProblem(id){
         const problem = await Problem.findById(id);
+        if(!problem){
+            throw new NotFound("Problem",id)
+        }
         return problem;
     }
 

@@ -29,7 +29,6 @@ const getProblem = async (req,res,next)=>{
     try {
         const id = req.params.id
         const problem = await problemService.getProblem(id);
-        console.log(problem)
         res.status(StatusCodes.OK).json({
             success:true,
             message:"Problem Fetch Successfully",
