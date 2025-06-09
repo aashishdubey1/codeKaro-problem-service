@@ -69,9 +69,17 @@ const deleteProblem = async (req,res,next)=>{
     }
 }
 
-const updateProblem = (req,res,next)=>{
+const updateProblem = async (req,res,next)=>{
     try {
-        throw new NotImplemented("add Problem")
+        const id = req.params.id;
+        const body = req.body
+        const updatedProblem = await problemService.updateProblem(id,body)
+        res.status(StatusCodes.OK).json({
+            success:true,
+            message:"Problem Updated successfully",
+            error:{},
+            data:updatedProblem,
+        })
     } catch (error) {
         next(error)
     }

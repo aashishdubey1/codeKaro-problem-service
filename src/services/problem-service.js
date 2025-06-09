@@ -32,6 +32,12 @@ class ProblemService {
         return problem;
     }
 
+    async updateProblem(id,body){
+        body.description = markdownSanitizer(body.description); 
+        const updatedProblem = await this.problemRepository.updateProblem(id,body);
+        return updatedProblem;
+    }
+
 }
 
 module.exports = ProblemService

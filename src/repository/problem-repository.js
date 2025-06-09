@@ -38,6 +38,15 @@ class ProblemRepository{
         }
         return problem;
     }
+
+    async updateProblem(id,body){
+        const updatedProblem = await Problem.findByIdAndUpdate(id,body,{new:true})
+        if(!updatedProblem){
+            throw new NotFound("Problem",id);
+        }
+        return updatedProblem;
+    }
+
 }
 
 module.exports = ProblemRepository
