@@ -25,17 +25,23 @@ const addProblem = async (req,res,next)=>{
     }
 }
 
-const getProblem = (req,res,next)=>{
+const getProblem = async (req,res,next)=>{
     try {
-        throw new NotImplemented("add Problem")
+    
     } catch (error) {
         next(error)
     }
 }
 
-const getProblems = (req,res,next)=>{
+const getProblems = async (req,res,next)=>{
     try {
-        throw new NotImplemented("add Problem")
+        const problems = await problemService.getAllProblems()
+        res.status(StatusCodes.OK).json({
+            success:true,
+            message:"Problem Fetched Successfully",
+            error:{},
+            data:problems
+        })
     } catch (error) {
         next(error)
     }
