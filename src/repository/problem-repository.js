@@ -21,6 +21,11 @@ class ProblemRepository{
         return problems;
     }
 
+    async getProblem(id){
+        const problem = await Problem.findById(id);
+        return problem;
+    }
+
 }
 
 module.exports = ProblemRepository
